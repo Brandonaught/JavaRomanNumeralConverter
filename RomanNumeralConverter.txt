@@ -1,0 +1,72 @@
+​#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+int input, inputRemainingAfter1000, inputRemainingAfter100, inputRemainingAfter10;
+char ans;
+do
+{
+do
+{
+cout<<"Please enter an integer less than 5000 but greater than 0: ";
+cin>>input;
+inputRemainingAfter1000 = input % 1000, inputRemainingAfter100 = inputRemainingAfter1000 % 100,
+inputRemainingAfter10 = inputRemainingAfter100 % 10;
+}while((input || inputRemainingAfter1000 || inputRemainingAfter100 || inputRemainingAfter10) >= 5000
+|| (input || inputRemainingAfter1000 || inputRemainingAfter100 || inputRemainingAfter10) <= 0);
+cout<<input<<" in Roman Numerals is ";
+switch(input/1000)
+{
+case 1: cout<<"M"; break;
+case 2: cout<<"MM"; break;
+case 3: cout<<"MMM"; break;
+case 4: cout<<"MMMM"; break;
+
+}
+
+switch(inputRemainingAfter1000/100)//hundreds
+{
+case 1: cout<<"C"; break;
+case 2: cout<<"CC"; break;
+case 3: cout<<"CCC"; break;
+case 4: cout<<"CD"; break;
+case 5: cout<<"D"; break;
+case 6: cout<<"DC"; break;
+case 7: cout<<"DCC"; break;
+case 8: cout<<"DCCC"; break;
+case 9: cout<<"CM"; break;
+}
+switch(inputRemainingAfter100/10) //tens
+{
+case 1: cout<<"X"; break;
+case 2: cout<<"XX"; break;
+case 3: cout<<"XXX"; break;
+case 4: cout<<"XL"; break;
+case 5: cout<<"L"; break;
+case 6: cout<<"LX"; break;
+case 7: cout<<"LXX"; break;
+case 8: cout<<"LXXX"; break;
+case 9: cout<<"XC"; break;
+}
+switch(inputRemainingAfter10) //ones
+{
+case 5:
+case 6:
+case 7:
+case 8: cout<<"V";
+input -= 5;
+case 1: cout<<"I"; break;
+case 2: cout<<"II"; break;
+case 3: cout<<"III"; break;
+case 4: cout<<"IV"; break;
+case 9: cout<<"IX"; break;
+}
+
+cout<<", Would you like to do this again? ";
+cin>>ans;
+}while(ans == 'Y' || ans == 'y');
+return 0;
+}
